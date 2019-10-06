@@ -33,7 +33,7 @@ const ProductTemplate = ({ data: { contentfulProducts }, location }) => (
         className="snipcart-add-item"
         data-item-id={contentfulProducts.slug}
         data-item-price={contentfulProducts.price}
-        data-item-image={contentfulProduct.image.file.url}
+        data-item-image={contentfulProducts.image.file.url}
         data-item-name={contentfulProducts.name}
         data-item-url={location.pathname}
       >
@@ -41,7 +41,7 @@ const ProductTemplate = ({ data: { contentfulProducts }, location }) => (
       </button>
       <Img
         style={{ margin: "0 auto", maxWidth: 600 }}
-        fluid={contentfulProduct.image.fluid}
+        fluid={contentfulProducts.image.fluid}
       />
     </div>
   </Layout>
