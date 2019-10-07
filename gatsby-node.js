@@ -31,7 +31,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
 
-      allContentfulProduct {
+      allContentfulProducts {
         edges {
           node {
             slug
@@ -73,7 +73,7 @@ exports.createPages = async ({ graphql, actions }) => {
     });
   });
 
-  const products = result.data.allContentfulProduct.edges;
+  const products = result.data.allContentfulProducts.edges;
   products.forEach(({ node: product }) => {
     createPage({
       path: `/products/${product.slug}`,
