@@ -1,11 +1,11 @@
-import { resolve } from "path";
-import { createFilePath } from "gatsby-source-filesystem";
+const path = require("path");
+const { createFilePath } = require("gatsby-source-filesystem");
 
-const PostTemplate = resolve("./src/templates/post-template.js");
-const BlogTemplate = resolve("./src/templates/blog-template.js");
-const ProductTemplate = resolve("./src/templates/product-template.js");
+const PostTemplate = path.resolve("./src/templates/post-template.js");
+const BlogTemplate = path.resolve("./src/templates/blog-template.js");
+const ProductTemplate = path.resolve("./src/templates/product-template.js");
 
-export function onCreateNode({ node, getNode, actions }) {
+exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
   if (node.internal.type === "MarkdownRemark") {
     const slug = createFilePath({ node, getNode, basePath: "posts" });
@@ -15,9 +15,9 @@ export function onCreateNode({ node, getNode, actions }) {
       value: slug
     });
   }
-}
+};
 
-export async function createPages({ graphql, actions }) {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
   const result = await graphql(`
     {
@@ -83,4 +83,4 @@ export async function createPages({ graphql, actions }) {
       }
     });
   });
-}
+};

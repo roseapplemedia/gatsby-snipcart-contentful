@@ -1,51 +1,51 @@
-import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
-import React from 'react'
-import netlifyIdentity from 'netlify-identity-widget'
+import { Link } from "gatsby";
+import PropTypes from "prop-types";
+import React from "react";
+import netlifyIdentity from "netlify-identity-widget";
 
-import gatsbyLogo from '../images/gatsby-icon.png'
+import headerLogo from "../images/cattywampuslogo.png";
 
 const isActive = ({ isCurrent }) => {
-  return { className: isCurrent ? 'active' : 'navlink' }
-}
+  return { className: isCurrent ? "active" : "navlink" };
+};
 
-const NavLink = props => <Link getProps={isActive} {...props} />
+const NavLink = props => <Link getProps={isActive} {...props} />;
 
 class Header extends React.Component {
   componentDidMount() {
-    netlifyIdentity.init()
+    netlifyIdentity.init();
   }
 
   render() {
-    const { siteTitle } = this.props
+    const { siteTitle } = this.props;
 
     return (
       <div
         style={{
-          background: `rebeccapurple`,
-          marginBottom: `1.45rem`,
+          background: `#8DD4BD`,
+          marginBottom: `1.45rem`
         }}
       >
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
             margin: `0 auto`,
             maxWidth: 960,
-            padding: `1.45rem 1.0875rem`,
+            padding: `1.45rem 1.0875rem`
           }}
         >
           {/* Title / Logo */}
-          <span style={{ display: 'flex', alignItems: 'center' }}>
+          <span style={{ display: "flex", alignItems: "center" }}>
             <img
-              src={gatsbyLogo}
-              alt="Gatsby Garb Logo"
+              src={headerLogo}
+              alt="company logo"
               style={{
-                borderRadius: '50%',
-                border: '3px solid orange',
-                margin: '0 5px',
-                width: '50px',
+                borderRadius: "0%",
+                border: "3px solid white",
+                margin: "0 5px",
+                width: "650px"
               }}
             />
             <h1 style={{ margin: 0 }}>
@@ -53,7 +53,7 @@ class Header extends React.Component {
             </h1>
           </span>
 
-          <NavLink to="/blog">Blog</NavLink>
+          {/* <NavLink to="/blog">Blog</NavLink> */}
 
           <NavLink to="/products">Store</NavLink>
 
@@ -61,7 +61,7 @@ class Header extends React.Component {
 
           {/* Shopping Cart Summary */}
           <div
-            style={{ color: 'white', cursor: 'pointer' }}
+            style={{ color: "white", cursor: "pointer" }}
             className="snipcart-summary snipcart-checkout"
           >
             <div>
@@ -69,31 +69,31 @@ class Header extends React.Component {
             </div>
             <div>
               <span
-                style={{ fontWeight: 'bold' }}
+                style={{ fontWeight: "bold" }}
                 className="snipcart-total-items"
-              />{' '}
+              />{" "}
               Items in Cart
             </div>
             <div>
-              Total price{' '}
+              Total price{" "}
               <span
-                style={{ fontWeight: 'bold' }}
+                style={{ fontWeight: "bold" }}
                 className="snipcart-total-price"
               />
             </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
+  siteTitle: PropTypes.string
+};
 
 Header.defaultProps = {
-  siteTitle: ``,
-}
+  siteTitle: ``
+};
 
-export default Header
+export default Header;
