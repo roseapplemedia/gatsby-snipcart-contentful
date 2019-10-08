@@ -35,7 +35,7 @@ class Products extends React.Component {
           {/* Products List */}
           {products.map(({ node: product }) => (
             <div key={product.id}>
-              <h2>Garb Products</h2>
+              <h2>For Humans</h2>
               <Link
                 to={`/products/${product.slug}`}
                 style={{ textDecoration: "none", color: "#551a8b" }}
@@ -64,7 +64,7 @@ class Products extends React.Component {
 
 export const query = graphql`
   {
-    allContentfulProducts {
+    allContentfulProducts(filter: { category: { eq: "human" } }) {
       edges {
         node {
           id
@@ -74,7 +74,7 @@ export const query = graphql`
           private
           image {
             fluid(maxWidth: 400) {
-              ...GatsbyContentfulFluid_tracedSVG
+              ...GatsbyContentfulFluid
             }
           }
         }

@@ -24,7 +24,7 @@ const ProductTemplate = ({ data: { contentfulProducts }, location }) => (
       <p>{contentfulProducts.description}</p>
       <button
         style={{
-          background: "darkorange",
+          background: "white",
           color: "white",
           padding: "0.3em",
           borderRadius: "5px",

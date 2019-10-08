@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import netlifyIdentity from "netlify-identity-widget";
 
-import headerLogo from "../images/cattywampuslogo.png";
+import cattywampuslogo from "../images/cattywampuslogo.png";
 
 const isActive = ({ isCurrent }) => {
   return { className: isCurrent ? "active" : "navlink" };
@@ -26,42 +26,54 @@ class Header extends React.Component {
           marginBottom: `1.45rem`
         }}
       >
+        <div>
+          <NavLink to="/">
+            {siteTitle}
+            {/* Title / Logo */}
+            <span style={{ display: "flex", alignItems: "center" }}>
+              <img
+                src={cattywampuslogo}
+                alt="cattywampus"
+                style={{
+                  borderRadius: "0%",
+                  border: "3px solid #888",
+                  margin: "0 auto",
+                  width: "100VW"
+                }}
+              />
+              <h1 style={{ margin: 0 }}></h1>
+            </span>
+          </NavLink>
+        </div>
+
         <div
           style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             margin: `0 auto`,
-            maxWidth: 960,
-            padding: `1.45rem 1.0875rem`
+            maxWidth: "75vw",
+            padding: `.45rem .0875rem`
           }}
         >
-          {/* Title / Logo */}
-          <span style={{ display: "flex", alignItems: "center" }}>
-            <img
-              src={headerLogo}
-              alt="company logo"
-              style={{
-                borderRadius: "0%",
-                border: "3px solid white",
-                margin: "0 5px",
-                width: "650px"
-              }}
-            />
-            <h1 style={{ margin: 0 }}>
-              <NavLink to="/">{siteTitle}</NavLink>
-            </h1>
-          </span>
-
-          {/* <NavLink to="/blog">Blog</NavLink> */}
-
-          <NavLink to="/products">Store</NavLink>
-
-          <div data-netlify-identity-menu />
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr 1fr",
+              gridColumnGap: "20px"
+            }}
+          >
+            <NavLink to="/dog-products">Dogs</NavLink>
+            <NavLink to="/cat-products">Cats</NavLink>
+            <NavLink to="/human-products">Humans</NavLink>
+          </div>
 
           {/* Shopping Cart Summary */}
           <div
-            style={{ color: "white", cursor: "pointer" }}
+            style={{
+              color: "white",
+              cursor: "pointer"
+            }}
             className="snipcart-summary snipcart-checkout"
           >
             <div>
